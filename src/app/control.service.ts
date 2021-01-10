@@ -12,10 +12,22 @@ export class ControlService {
   constructor(private http: HttpClient) { }
 
   commandUrl = 'command';
+  signinUrl = 'signin';
+
+  signin () {
+    this.http.post(environment.backendUrl+this.signinUrl, {})
+    .toPromise()
+    .then(result => {
+      window.location.href = result.redirectTo;
+    });
+  }
 
   sendCommand (command: Command) {
     this.http.get(environment.backendUrl+this.commandUrl+"/"+command.direction)
-    .subscribe(res => {console.log(res)});
+      .toPromise()
+      .then(result => {
+        console.log('From Promise:', result);
+      });
   }
     
 }
