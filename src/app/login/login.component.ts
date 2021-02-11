@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
   signin(){
-    this.controleService.signin()
+    this.controleService.googleSignin()
   }
 
 

@@ -11,14 +11,23 @@ export class ControlService {
 
   constructor(private http: HttpClient) { }
 
-  commandUrl = 'command';
-  signinUrl = 'signin';
+  private commandUrl:String = 'command';
+  private googleSigninUrl:String = 'google_signin';
+  private googleTokenUrl:String = 'google_token';
 
-  signin () {
-    this.http.post(environment.backendUrl+this.signinUrl, {})
+  googleSignin () {
+    this.http.post(environment.backendUrl+this.googleSigninUrl, {})
     .toPromise()
     .then(result => {
-      window.location.href = result.redirectTo;
+      window.location.href = (<any>result).redirectTo;
+    });
+  }
+
+  googleToken (state:String, code:String, authuser:String, prompt:String) {
+    this.http.post(environment.backendUrl+this.googleTokenUrl, {state:state, code:code, authuser:authuser, prompt:prompt})
+    .toPromise()
+    .then(result => {
+      console.log("result"+result);
     });
   }
 
