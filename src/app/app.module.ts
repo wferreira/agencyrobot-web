@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { CommandComponent } from './command/command.component';
 import { GoogleComponent } from './google/google.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CommandComponent,
-    GoogleComponent
+    GoogleComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

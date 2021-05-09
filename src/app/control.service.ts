@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Command } from './command.data';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +26,7 @@ export class ControlService {
   }
 
   googleToken (state:String, code:String, authuser:String, prompt:String) {
-    this.http.post(environment.backendUrl+this.googleTokenUrl, {state:state, code:code, authuser:authuser, prompt:prompt})
-    .toPromise()
-    .then(result => {
-      console.log("result"+result);
-    });
+    return this.http.post<User>(environment.backendUrl+this.googleTokenUrl, {state:state, code:code, authuser:authuser, prompt:prompt});
   }
 
   sendCommand (command: Command) {
