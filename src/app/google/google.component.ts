@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ControlService } from '../control.service';
+import { AuthService } from '../auth.service';
 import { User } from '../user';
 
 @Component({
   selector: 'app-google',
   templateUrl: './google.component.html',
-  styleUrls: ['./google.component.scss'],
-  providers: [User]
+  styleUrls: ['./google.component.scss']
 })
 export class GoogleComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private controleService: ControlService, private router:Router, private user:User) { }
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -26,18 +25,12 @@ export class GoogleComponent implements OnInit {
       // console.log(authuser);
       // console.log(prompt);
 
-      this.controleService.googleToken(state, code, authuser, prompt)
+      this.authService.googleToken(state, code, authuser, prompt)
       .subscribe((u: User) => {
-        console.log("====>"+u.Name);
-        this.user.Name = u.Name;
-        this.user.Locale = u.Locale;
-        this.user.PictureUrl = u.PictureUrl;
+        this.authService.user = u;
         this.router.navigate(['dashboard']);
       });
-
     });
-
-
   }
 
 }

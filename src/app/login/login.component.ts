@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { ControlService } from '../control.service';
 
 @Component({
@@ -8,14 +9,13 @@ import { ControlService } from '../control.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private controleService: ControlService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   signin(){
-    this.controleService.googleSignin()
+    this.authService.googleSignin();
   }
-
 
 }

@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { AuthService } from '../auth.service';
+import { ControlService } from '../control.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  providers: [User]
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public user:User) { }
+  constructor(public authService:AuthService, private controlService:ControlService) { }
 
   ngOnInit(): void {
+    this.controlService.getRobotList();
   }
 
 }
