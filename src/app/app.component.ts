@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ControlService } from './control.service';
-import { Command } from './command.data';
 
 @Component({
   selector: 'app-root',

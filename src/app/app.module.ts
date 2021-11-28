@@ -4,12 +4,12 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
-import { CommandComponent } from './command/command.component';
-import { GoogleComponent } from './google/google.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { User } from './user';
-import { AuthService } from './auth.service';
+import { LoginComponent } from './pages/login/login.component';
+import { CommandComponent } from './pages/command/command.component';
+import { GoogleComponent } from './pages/google/google.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { User } from './models/user';
+import { AuthService } from './services/auth.service';
 
 export function init_app(authService:AuthService) {
   if (authService.isAuthenticated()){
