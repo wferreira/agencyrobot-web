@@ -1,3 +1,10 @@
 <p>dashboard works!</p>
 
-Name : {{authService.user.Name}}
+<p>Name : {{authService.user.Name}}</p>
+
+<table>
+<tr *ngFor="let robot of robots">
+    <td><a [routerLink]="['/command', robot.id]">{{robot.name}}</a></td>
+</tr>
+</table>
+

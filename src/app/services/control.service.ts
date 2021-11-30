@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Command } from '../models/command.data';
+import { Robot } from '../models/robot.data';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class ControlService {
   private commandUrl:String = 'command';
   private robotListUrl:String = 'robots';
 
-  sendCommand (command: Command) {
-    this.http.get(environment.backendUrl+this.commandUrl+"/"+command.direction)
+  sendCommand (robotId:String, command: Command) {
+    this.http.get(environment.backendPrivateUrl+this.commandUrl+"/"+robotId+"/"+command.direction)
       .toPromise()
       .then(result => {
         console.log('From Command Promise:', result);
@@ -22,11 +23,7 @@ export class ControlService {
   }
     
   getRobotList () {
-    this.http.get(environment.backendPrivateUrl+this.robotListUrl)
-      .toPromise()
-      .then(result => {
-        console.log('From Robot List Promise:', result);
-      });
+    return this.http.get<Robot[]>(environment.backendPrivateUrl+this.robotListUrl);
   }
 
 }

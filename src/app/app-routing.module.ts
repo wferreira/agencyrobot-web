@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'google', component: GoogleComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
-  { path: 'command', component: CommandComponent, canActivate: [AuthGuardService] },
+  { path: 'command/:robotId', component: CommandComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: 'dashboard' }
 ];
 

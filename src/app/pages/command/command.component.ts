@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Command } from 'src/app/models/command.data';
 import { ControlService } from '../../services/control.service';
 
@@ -9,29 +10,34 @@ import { ControlService } from '../../services/control.service';
 })
 export class CommandComponent  {
   
-  constructor(private controleService: ControlService) {}
+  robotId = undefined;
+
+  constructor( private route: ActivatedRoute, private controleService: ControlService) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.robotId = params['robotId']; // (+) converts string 'id' to a number
+    });
   }
 
   forward(){
-    this.controleService.sendCommand({ direction: "F" } as Command)
+    this.controleService.sendCommand(this.robotId, { direction: "F" } as Command)
   }
 
   backward(){
-    this.controleService.sendCommand({ direction: "B" } as Command)
+    this.controleService.sendCommand(this.robotId, { direction: "B" } as Command)
   }
 
   left(){
-    this.controleService.sendCommand({ direction: "L" } as Command)
+    this.controleService.sendCommand(this.robotId, { direction: "L" } as Command)
   }
 
   right(){
-    this.controleService.sendCommand({ direction: "R" } as Command)
+    this.controleService.sendCommand(this.robotId, { direction: "R" } as Command)
   }
 
   stop(){
-    this.controleService.sendCommand({ direction: "S" } as Command)
+    this.controleService.sendCommand(this.robotId, { direction: "S" } as Command)
   }
 
 }
