@@ -1,10 +1,11 @@
-<p>dashboard works!</p>
+<p>Robot list</p>
 
-<p>Name : {{authService.user.Name}}</p>
 
-<table>
-<tr *ngFor="let robot of robots">
-    <td><a [routerLink]="['/command', robot.id]">{{robot.name}}</a></td>
-</tr>
-</table>
-
+<div class="card"*ngFor="let robot of robots">
+    <div class="card-header">
+        {{robot.name}}
+    </div>
+    <div class="card-body">
+        <a [routerLink]="['/command', robot.id]" class="btn btn-primary">Control the robot !</a>
+    </div>
+</div>

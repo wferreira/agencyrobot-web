@@ -1,7 +1,23 @@
 
-<button (click)="forward()">Forward</button>
-<button (click)="backward()">Backward</button>
-<button (click)="left()">Left</button>
-<button (click)="right()">Right</button>
-<button (click)="stop()">Stop</button>
+<div class="control-panel">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"><button (click)="forward()" class="btn btn-primary">Forward</button></div>
+      <div class="col"></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col"><button (click)="left()" class="btn btn-primary">Left</button></div>
+        <div class="col"><button (click)="stop()" class="btn btn-danger">Stop</button></div>
+        <div class="col"><button (click)="right()" class="btn btn-primary">Right</button></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col"></div>
+        <div class="col"><button (click)="backward()" class="btn btn-primary">Backward</button></div>
+        <div class="col"></div>
+    </div>
+  </div>
+
+
+
+
 

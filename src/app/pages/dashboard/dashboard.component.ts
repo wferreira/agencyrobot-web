@@ -1,7 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Robot } from 'src/app/models/robot.data';
-import { AuthService } from 'src/app/services/auth.service';
 import { ControlService } from '../../services/control.service';
 
 @Component({
@@ -11,7 +9,7 @@ import { ControlService } from '../../services/control.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public authService:AuthService, private controlService:ControlService) { }
+  constructor(private controlService:ControlService) { }
 
   robots:Robot[];
 
