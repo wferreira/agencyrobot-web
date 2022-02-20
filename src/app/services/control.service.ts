@@ -12,9 +12,8 @@ export class ControlService {
 
   constructor(private http: HttpClient) { }
 
-  private initRobotUrl:String = environment.backendPrivateUrl+'robot/init';
+  private initRobotUrl:string = environment.backendPrivateUrl+'robot/init';
   private robotListUrl:string = environment.backendPrivateUrl+'robots';
-  private commandUrl:String = environment.backendPrivateUrl+'robot/${robotId}/command/${cmd}'; 
 
 
   initRobotConfiguration(robotId:string){
@@ -28,7 +27,7 @@ export class ControlService {
   }
 
   sendCommand (robotId:string, command: Command) {
-    this.http.get(environment.backendPrivateUrl+this.commandUrl+"/"+robotId+"/"+command.direction)
+    this.http.get(`${environment.backendPrivateUrl}/robot/${robotId}/command/${command.direction}`)
       .toPromise()
       .then(result => {
         console.log('From Command Promise:', result);
